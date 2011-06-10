@@ -5,20 +5,20 @@ API_KEY='AIzaSyBLdWjIzKp0h__mgjPJxKQKUtlFFNfGRx4'
 test_langs = {
 
     :english =>{:voices=>{:male=> "victor", :female=>"vanessa"}},
-    :chinese => {:google=>"zh-CN",:voices=>{:male =>'linlin',:female=>'lisheng'}},
-    :danish => {:google=>"da", :voice=>{:male=>'magnus',:female=>'frida'}},
-    :dutch => {:google=>"nl", :voices=>{:male=>'willem',:female=>'saskia'}},
-    :french => {:google=>"fr", :voices=>{:male=>'florence',:female=>'juliette'}},
-    :galician => {:google=>"gl", :voices=>{:female=>'carmela'}},    
-    :german => {:google=>"de",:voices=>{:male=>'stefan',:female=>'katrin'}},    
-    :greek => {:google=>"el", :voices=>{:male=>'nikos',:female=>'afroditi'}},    
-    :italian => {:google=>"it",:voices=>{:male=>'marcello',:female=>'paola'}},    
-    :norwegian => {:google=>"no",:voices=>{:male=>'henrik',:female=>'vilde'}},    
-    :polish => {:google=>"pl",:voices=>{:male=>'krzysztof',:female=>'zosia'}},
-    :portuguese => {:google=>"pt",:voices=>{:male=>'felipe',:female=>'fernanda'}},
-    :russian => {:google=>"ru",:voices=>{:male=>'dmitri',:female=>'olga'}},
-    :spanish => {:google=>"es",:voices=>{:male=>'carlos',:female=>'carmen'}},
-    :swedish => {:google=>"sv",:voices=>{:male=>'sven',:female=>'annika'}}
+    :chinese => {:bing=>"zh-CN",:voices=>{:male =>'linlin',:female=>'lisheng'}},
+    :danish => {:bing=>"da", :voice=>{:male=>'magnus',:female=>'frida'}},
+    :dutch => {:bing=>"nl", :voices=>{:male=>'willem',:female=>'saskia'}},
+    :french => {:bing=>"fr", :voices=>{:male=>'florence',:female=>'juliette'}},
+    :galician => {:bing=>"gl", :voices=>{:female=>'carmela'}},    
+    :german => {:bing=>"de",:voices=>{:male=>'stefan',:female=>'katrin'}},    
+    :greek => {:bing=>"el", :voices=>{:male=>'nikos',:female=>'afroditi'}},    
+    :italian => {:bing=>"it",:voices=>{:male=>'marcello',:female=>'paola'}},    
+    :norwegian => {:bing=>"no",:voices=>{:male=>'henrik',:female=>'vilde'}},    
+    :polish => {:bing=>"pl",:voices=>{:male=>'krzysztof',:female=>'zosia'}},
+    :portuguese => {:bing=>"pt",:voices=>{:male=>'felipe',:female=>'fernanda'}},
+    :russian => {:bing=>"ru",:voices=>{:male=>'dmitri',:female=>'olga'}},
+    :spanish => {:bing=>"es",:voices=>{:male=>'carlos',:female=>'carmen'}},
+    :swedish => {:bing=>"sv",:voices=>{:male=>'sven',:female=>'annika'}}
 
 }
 
@@ -84,7 +84,7 @@ while get_another_language
             }
         end
         if language.value != 'keywords' and language.value != 'exit'
-            say translate("#{fetch_weather(zip_code.value)}", "#{test_langs[language.value.to_sym][:google]}"), 
+            say translate("#{fetch_weather(zip_code.value)}", "#{test_langs[language.value.to_sym][:bing]}"), 
                 {:voice =>"#{test_langs[language.value.to_sym][:voices][speaker_gender.value.to_sym]}"}
         end
     end  
