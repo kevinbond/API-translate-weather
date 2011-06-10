@@ -36,6 +36,7 @@ def fetch_weather(zip)
   url = URI.encode(yahoo_url + query)
   log "==========================> #{url}"
   weather_data = JSON.parse(RestClient.get(url))
+  weather_result = weather_data["query"]["results"]["channel"]["item"]["forecast"][0]
   return "Today will be #{weather_result["text"]} with a high of #{weather_result["high"]} and a low of #{weather_result["low"]}"
 end
           
