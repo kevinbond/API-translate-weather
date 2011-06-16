@@ -1,4 +1,4 @@
-%w(rubygems openssl rest_client uri json net/http).each{|lib| require lib}
+%w(rubygems openssl uri json net/http).each{|lib| require lib}
 
 API_KEY='AIzaSyBLdWjIzKp0h__mgjPJxKQKUtlFFNfGRx4'
 
@@ -23,8 +23,6 @@ test_langs = {
 }
 
 def translate(msg, to)
-  #translation_result = RestClient.get("https://www.googleapis.com/language/translate/v2?key=#{API_KEY}&q=#{URI.encode(opt[:msg])}&source=#{opt[:from]}&target=#{opt[:to]}")
-  #JSON.parse(translation_result)["data"]["translations"][0]["translatedText"]
   url = 'http://api.bing.net/json.aspx?AppId=14CC47476DC757F57687BB3CF8CD5447538540E4&Query=' + URI.encode(msg) + '&Sources=Translation&Version=2.2&Market=en-us&Options=EnableHighlighting&Translation.SourceLanguage=en&Translation.TargetLanguage='+ to +'&JsonType=raw'
   response = Net::HTTP.get_response(URI.parse(url))
   JSON.parse(response.body)['SearchResponse']['Translation']['Results'][0]['TranslatedTerm']
@@ -34,8 +32,9 @@ def fetch_weather(zip)
   yahoo_url = 'http://query.yahooapis.com/v1/public/yql?format=json&q='
   query = "SELECT * FROM weather.forecast WHERE location = " + zip
   url = URI.encode(yahoo_url + query)
-  log "==========================> #{url}"
-  weather_data = JSON.parse(RestClient.get(url))
+  response = Net::HTTP.get_response(URI.parse(url))
+  weather_data = JSON.parse(response.body)
+  weather_result = weather_data["query"]["results"]["channel"]["item"]["forecast"][0]
   return "Today will be #{weather_result["text"]} with a high of #{weather_result["high"]} and a low of #{weather_result["low"]}"
 end
           
