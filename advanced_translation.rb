@@ -66,7 +66,7 @@ while get_another_language
         get_another_language = false
     else
         if language.value == 'keywords'
-            say "The languages that are available are chinese, danish, dutch, french, galician, german, greek, italian, norwegian, polish, portuguese, russian, spanish, swedish", {
+            say "The languages that are available are chinese, danish, dutch, french, german, greek, italian, norwegian, polish, portuguese, russian, spanish, swedish", {
                 :voice =>  "#{test_langs[:english][:voices][speaker_gender.value.to_sym]}"
             }
             language = ask "What language would you like to hear now? Say keywords to hear what languages are available again Or say exit to leave.", {
@@ -76,7 +76,7 @@ while get_another_language
             }
         else
             language = ask "What language would you like to hear now? Say keywords to hear what languages are available Or say exit to leave.", {
-                :choices => "chinese, danish, dutch, french, galician, german, greek, italian, norwegian, polish, portuguese, russian, spanish, swedish, exit, keywords",
+                :choices => "chinese, danish, dutch, french, german, greek, italian, norwegian, polish, portuguese, russian, spanish, swedish, exit, keywords",
                 :voice =>"#{test_langs[:english][:voices][speaker_gender.value.to_sym]}",
                 :attempt => 10
             }
