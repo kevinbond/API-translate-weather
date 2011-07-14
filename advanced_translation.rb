@@ -1,6 +1,9 @@
-%w(rubygems openssl uri json net/http).each{|lib| require lib}
+require 'openssl'
+require 'uri'
+require 'json'
+require 'net/http'
 
-API_KEY='AIzaSyBLdWjIzKp0h__mgjPJxKQKUtlFFNfGRx4'
+API_KEY=''
 
 test_langs = {
 
@@ -22,7 +25,7 @@ test_langs = {
 }
 
 def translate(msg, to)
-  url = 'http://api.bing.net/json.aspx?AppId=14CC47476DC757F57687BB3CF8CD5447538540E4&Query=' + URI.encode(msg) + '&Sources=Translation&Version=2.2&Market=en-us&Options=EnableHighlighting&Translation.SourceLanguage=en&Translation.TargetLanguage='+ to +'&JsonType=raw'
+  url = 'http://api.bing.net/json.aspx?AppId=#{API_KEY}&Query=' + URI.encode(msg) + '&Sources=Translation&Version=2.2&Market=en-us&Options=EnableHighlighting&Translation.SourceLanguage=en&Translation.TargetLanguage='+ to +'&JsonType=raw'
   response = Net::HTTP.get_response(URI.parse(url))
   JSON.parse(response.body)['SearchResponse']['Translation']['Results'][0]['TranslatedTerm']
 end
