@@ -9,7 +9,6 @@ test_langs = {
     :danish => {:bing=>"da", :voice=>{:male=>'magnus',:female=>'frida'}},
     :dutch => {:bing=>"nl", :voices=>{:male=>'willem',:female=>'saskia'}},
     :french => {:bing=>"fr", :voices=>{:male=>'florence',:female=>'juliette'}},
-    :galician => {:bing=>"gl", :voices=>{:female=>'carmela'}},    
     :german => {:bing=>"de",:voices=>{:male=>'stefan',:female=>'katrin'}},    
     :greek => {:bing=>"el", :voices=>{:male=>'nikos',:female=>'afroditi'}},    
     :italian => {:bing=>"it",:voices=>{:male=>'marcello',:female=>'paola'}},    
@@ -71,7 +70,7 @@ while get_another_language
                 :voice =>  "#{test_langs[:english][:voices][speaker_gender.value.to_sym]}"
             }
             language = ask "What language would you like to hear now? Say keywords to hear what languages are available again Or say exit to leave.", {
-                :choices => "chinese, danish, dutch, french, galician, german, greek, italian, norwegian, polish, portuguese, russian, spanish, swedish, exit, keywords",
+                :choices => "chinese, danish, dutch, french, german, greek, italian, norwegian, polish, portuguese, russian, spanish, swedish, exit, keywords",
                 :voice =>"#{test_langs[:english][:voices][speaker_gender.value.to_sym]}",
                 :attempts => 10
             }
